@@ -43,5 +43,5 @@ React 앱 내에서 redux를 사용하는 방법으로 react-redux 패키지가 
 useSelector
 -----
 useSelector는 react-redux에서 제공하는 훅이다.     
-스토어에는 수많은 데이터들이 있고 프로덕션 레벨에서는 세부적인 데이터에 접근하는게 필요할텐데 이를 쉽게 접근할 수 있는 훅이useSelector이다. 또한 state가 변경될 때 알아서 트리거를 해주는 역할을 한다.     
-즉 subscript을 자동으로 해주는 게 useSelector훅이다. 
+스토어에는 수많은 데이터들이 있고 프로덕션 레벨에서는 세부적인 데이터에 접근하는게 필요할텐데 이를 쉽게 접근할 수 있는 훅이useSelector이다.     
+또한 state가 변경될 때 알아서 트리거를 해주는 역할을 한다. 즉 subscript을 자동으로 해주는 게 useSelector훅이다. 
