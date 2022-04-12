@@ -61,5 +61,9 @@ Redux를 사용함으로써 생길 수 있는 이슈
 
 Redux toolkit
 -----
-Redux toolkit은 위에 소개한 redux의 고질적인 문제들을 쉽게 해결할 수 있기 때문에 강력한 라이브러리이다.       
+Redux toolkit은 위에 소개한 redux의 고질적인 문제들을 쉽게 해결할 수 있기 때문에 강력한 라이브러리이다.    
+기본적으로 redux toolkit은 createSlice를 이용해서 slice들을 만들어 이를 configureStore에 넣어줘서 사용한다.     
+이는 redux에서 createStore에 reducer함수를 넣는 것과 비슷하다. createSlice의 장점은 action에 따라 state값을 리턴하는 보일러 플레이트 코드를 줄일 수 있는 것(if문으로 action.type확인 제거)과 원본객체를 실제로는 건들지 않으면서 코드는 건들 수 있게 만드는 것이 장점이다. 두번째 장점이 무슨 말이냐면 redux toolkit은 내부적으로 immer패키지를 설치하게 되는데 이는 원본객체에 접근하려는 것을 감지하고 새로운 객체를 생성해서 변경된 부분만 오버라이드해서 리턴하게 된다.     
+
+redux toolkit에서 dispatch를 하는 방법은 counterSlice.actions처럼 뒤에 actions를 호출함으로써 사용할 수 있다. 예시로 counterSlice에 reducer로 정의된 increment리듀서가 있다고 가정해보자. 이를 dispatch하기 위해서는 dispatch({counterSlice.actions.increment()})와 같이 사용하면 접근하여 state를 변경할 수 있다. 이것이 가능한 이유는 actions함수를 실행했을 때 액션 객체를 생성하게 되고 그 액션객체는 내부적으로 식별자를 만들기 때문이다. 이는 오타에 의한 문제를 해결할 수 있고 if문을 통한 type비교를 하지 않아도 되기에 매우 강력하다. 그리고 payload(데이터)를 전달하고 싶다면 호출하는 부분에서는 그냥 data를 넣어주고 받는쪽에서 action.payload로 받으면 된다. 
 
