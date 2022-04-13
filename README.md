@@ -69,4 +69,5 @@ redux toolkit에서 dispatch를 하는 방법은 counterSlice.actions처럼 뒤�
 
 async, sideEffect에서의 Redux
 -----
-Redux에서 reducer는 기본적으로 순수함수여야 한다. 이 때문에 sideEffect가 있는 http요청이나 async와 같은 비동기 상황에서는 순수함수 내부에 사용할 수 없게 된다. 이 때문에 우리는 개발할 때 우리의 논리를 어디에 두는가를 결정해야한다. sideeffect나 비동기 상황이 없는 경우에는 순수 reducer를 통해서 개발하고 이들을 포함한다면 컴포넌트 단에서 처리를 해준뒤 끝처리만 redux에 저장하는 식으로 해야한다. 
+Redux에서 reducer는 기본적으로 순수함수여야 한다. 이 때문에 sideEffect가 있는 http요청이나 async와 같은 비동기 상황에서는 순수함수 내부에 사용할 수 없게 된다. 이 때문에 우리는 개발할 때 우리의 논리를 어디에 두는가를 결정해야한다. sideeffect나 비동기 상황이 없는 경우에는 순수 reducer를 통해서 개발하고, 만약 이들을 포함한다면 컴포넌트 단에서 처리를 해준뒤 끝처리만 redux에 저장하는 식으로 해야한다.      
+하지만 더 좋은 방법이 있는데 이는 useEffect를 컴포넌트단에서 사용하는 것이다. useEffect는 사이드 이펙트 부분을 처리하고 dependency가 변경될 때마다 실행이 되기 때문에 http요청과 같은 부분을 redux와 연결해서 사용할 때 좋은 방법이다. 
