@@ -67,3 +67,6 @@ Redux toolkit은 위에 소개한 redux의 고질적인 문제들을 쉽게 해�
 
 redux toolkit에서 dispatch를 하는 방법은 counterSlice.actions처럼 뒤에 actions를 호출함으로써 사용할 수 있다. 예시로 counterSlice에 reducer로 정의된 increment리듀서가 있다고 가정해보자. 이를 dispatch하기 위해서는 dispatch({counterSlice.actions.increment()})와 같이 사용하면 접근하여 state를 변경할 수 있다. 이것이 가능한 이유는 actions함수를 실행했을 때 액션 객체를 생성하게 되고 그 액션객체는 내부적으로 식별자를 만들기 때문이다. 이는 오타에 의한 문제를 해결할 수 있고 if문을 통한 type비교를 하지 않아도 되기에 매우 강력하다. 그리고 payload(데이터)를 전달하고 싶다면 호출하는 부분에서는 그냥 data를 넣어주고 받는쪽에서 action.payload로 받으면 된다. 
 
+async, sideEffect에서의 Redux
+-----
+Redux에서 reducer는 기본적으로 순수함수여야 한다. 이 때문에 sideEffect가 있는 http요청이나 async와 같은 비동기 상황에서는 순수함수 내부에 사용할 수 없게 된다. 이 때문에 우리는 개발할 때 우리의 논리를 어디에 두는가를 결정해야한다. sideeffect나 비동기 상황이 없는 경우에는 순수 reducer를 통해서 개발하고 이들을 포함한다면 컴포넌트 단에서 처리를 해준뒤 끝처리만 redux에 저장하는 식으로 해야한다. 
